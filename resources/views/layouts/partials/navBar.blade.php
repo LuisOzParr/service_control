@@ -12,6 +12,12 @@
     </div>
 
     <div class="navbar-menu" id="navMenu">
+        @auth
+            <div class="navbar-start">
+                <a class="navbar-item" href="{{route('service.index')}}">Servicios</a>
+            </div>
+
+        @endauth
 
         <div class="navbar-end" id="navbarBasicExample">
             @guest
