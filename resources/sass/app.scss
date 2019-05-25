@@ -1,3 +1,17 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 @import "~font-awesome/scss/font-awesome.scss";
+
+$sizes: (10,20,30,40,50,60,70,80,90,100);
+$positions: ('top','left','bottom','right');
+
+@each $size in $sizes {
+  @each $position in $positions{
+    .m-#{$position}-#{$size} {
+      margin-#{$position}: $size + px !important;
+    }
+    .p-#{$position}-#{$size} {
+      padding-#{$position}: $size + px !important;
+    }
+  }
+}
