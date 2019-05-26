@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ServicesController extends Controller
 {
@@ -36,7 +37,13 @@ class ServicesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //TODO DUDA STATUS
+        $service = new Service($request->all());
+        $service->user_id = Auth::user()->id;
+        $service->status=1;
+        $service->save();
+
+        return redirect()->route('service.index');
     }
 
     /**

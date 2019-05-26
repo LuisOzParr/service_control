@@ -1,4 +1,4 @@
-@if($slot != '')
+@if( $slot != '')
     <section class="hero is-dark">
         <div class="hero-body">
             <div class="container">
@@ -8,4 +8,5 @@
             </div>
         </div>
     </section>
+
 @endisset
