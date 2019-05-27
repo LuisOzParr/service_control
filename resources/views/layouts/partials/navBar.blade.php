@@ -15,6 +15,9 @@
         @auth
             <div class="navbar-start">
                 <a class="navbar-item" href="{{route('service.index')}}">Servicios</a>
+                @if(Auth::user()->rol->rol == 'admin')
+                    <a class="navbar-item" href="{{route('admin.users.index')}}">Admin</a>
+                @endif
             </div>
 
         @endauth

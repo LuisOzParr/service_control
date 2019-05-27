@@ -17,6 +17,7 @@ class UpdateUsersTable extends Migration
             $table->integer('age');
             $table->enum('gender',['male', 'female', 'other']);
             $table->unsignedBigInteger('rol_id')->default(1);
+            $table->boolean('status')->default(1);
 
             $table->foreign('rol_id')->references('id')->on('roles')->onDelate('cascade');
         });
@@ -33,6 +34,7 @@ class UpdateUsersTable extends Migration
             $table->dropForeign('users_rol_id_foreign');
             $table->dropColumn('gender');
             $table->dropColumn('age');
+            $table->dropColumn('status');
         });
     }
 }
