@@ -16,9 +16,12 @@ class UserStatus
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user()->status){
-            $next($request);
+        if(Auth::check() && !Auth::user()->status){
+            $guard = Auth::guard();
+            $guard->logout();
+
+            return redirect()->route('login')->withErrors('“No tienes permisos para acceder”.');
         }
-        return abort(401);
+        return $next($request);
     }
 }
