@@ -26,9 +26,18 @@
                     <td>{{$user->email}}</td>
                     <td>{{$user->age}}</td>
                     <td>{{$user->gender}}</td>
-                    <td>{{$user->status?'Activo':'Desactivado'}}</td>
                     <td>
+                        <form method="post" action="{{route('admin.users.update', [$user->id])}}" id="formUserStatus{{$user->id}}">
+                            @csrf
+                            @method('PUT')
+                            <div class="field" onclick="document.getElementById('formUserStatus{{$user->id}}').submit()">
+                                <input id="switchRoundedSuccess{{$user->id}}" type="checkbox" name="status" class="switch is-rounded is-success" {{$user->status?'checked':null}}>
+                                <label for="switchRoundedSuccess{{$user->id}}"></label>
+                            </div>
+                        </form>
                     </td>
+                    <td></td>
+
                 </tr>
             @endforeach
             @if($users->isEmpty())

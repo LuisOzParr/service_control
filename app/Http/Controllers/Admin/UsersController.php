@@ -31,7 +31,15 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        if($user->status){
+            $user->status = false;
+        }else{
+            $user->status = true;
+        }
+        $user->save();
+
+        return redirect()->route('admin.users.index');
     }
 
 }

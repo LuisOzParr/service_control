@@ -23,7 +23,7 @@ Route::group([ 'middleware' => 'auth'], function(){
    Route::resource('service', 'ServicesController')->except(['show']);
 
    Route::group([ 'middleware' => 'admin'], function(){
-        Route::resource('admin/users', 'Admin\UsersController', [ 'as' => 'admin'])->only(['index','show','update']);
+        Route::resource('admin/users', 'Admin\UsersController', [ 'as' => 'admin'])->only(['index','update']);
     });
 
 });

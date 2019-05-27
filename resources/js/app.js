@@ -6,6 +6,7 @@
 
 require('./bootstrap');
 require('bulma');
+require('bulma-switch');
 const swal = window.swal = require('sweetalert2');
 
 window.deleteButton = (idForm) => (
