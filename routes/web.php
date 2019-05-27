@@ -22,8 +22,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group([ 'middleware' => 'auth'], function(){
    Route::resource('service', 'ServicesController')->except(['show']);
 
-   Route::group([ 'middleware' => 'admin'], function(){
-        Route::resource('admin/users', 'Admin\UsersController', [ 'as' => 'admin'])->only(['index','update']);
+   Route::group([ 'middleware' => 'admin', 'as' => 'admin.'], function(){
+       Route::resource('admin/users', 'Admin\UsersController')->only(['index','update']);
+       Route::resource('admin/services', 'Admin\ServicesController')->only(['index']);
     });
 
 });

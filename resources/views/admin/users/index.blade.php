@@ -36,7 +36,7 @@
                             </div>
                         </form>
                     </td>
-                    <td></td>
+                    <td><a href="{{route('admin.services.index', ['id'=>$user->id])}}" class="button is-info">Ver servicios</a></td>
 
                 </tr>
             @endforeach
