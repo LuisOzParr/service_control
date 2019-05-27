@@ -17,7 +17,9 @@
 </head>
 <body>
     @include('layouts.partials.navBar')
-
+    @component('components.hero')
+        @yield('title')
+    @endcomponent
     <section class="section">
         <div class="container">
             @yield('content')
@@ -32,5 +34,6 @@
             </p>
         </div>
     </footer>
+    @yield('js')
 </body>
 </html>
