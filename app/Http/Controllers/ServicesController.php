@@ -54,6 +54,7 @@ class ServicesController extends Controller
      */
     public function edit($id)
     {
+        //TODO UTILIZAR POLICY Para evitar que intenten deditar un servicio de otro usuario
         $service = Service::find($id);
         return view('services.create_update', compact('service'));
     }
