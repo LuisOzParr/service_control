@@ -18,7 +18,7 @@ class UsersController extends Controller
     {
         $users = User::whereHas('rol', function ($query) {
             $query->where('rol','user');
-        })->get();
+        })->orderBy('id', 'asc')->get();
 
         return view('admin.users.index', compact('users'));
     }
