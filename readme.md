@@ -1,3 +1,8 @@
+# Live demo
+
+http://service-control.herokuapp.com/
+http://service-control.herokuapp.com/api/users
+
 # Installation
 
 1. Run  `composer install`
