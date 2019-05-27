@@ -41,7 +41,7 @@
                        required autocomplete="new-password">
             @endcomponent
             <hr>
-            @component('components.field',['icon'=>'fa-sort-numeric-asc','fieldName'=>'age'])
+            @component('components.field',['icon'=>'fa-sort-numeric-down','fieldName'=>'age'])
                 <input type="number"
                        class="input @error('age') is-danger @enderror"
                        placeholder="{{ __('Edad') }}"
