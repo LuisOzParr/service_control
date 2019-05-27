@@ -16,7 +16,7 @@ class ServicesController extends Controller
     public function index(Request $request)
     {
         $user = User::find($request->id);
-        $services = $user->services;
+        $services = $user->services()->orderBy('id', 'asc')->get();
         return view('admin.services.index', compact('services', 'user'));
     }
 }

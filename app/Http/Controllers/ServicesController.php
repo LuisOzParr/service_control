@@ -15,7 +15,8 @@ class ServicesController extends Controller
      */
     public function index()
     {
-        $services = Auth::user()->services;
+        $services = Auth::user()->services()->orderBy('id', 'asc')->get();
+
         return view('services.index', compact('services'));
     }
 
