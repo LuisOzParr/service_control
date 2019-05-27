@@ -15,7 +15,7 @@ class ServicesController extends Controller
      */
     public function index()
     {
-        $services = Service::all();
+        $services = Auth::user()->services;
         return view('services.index', compact('services'));
     }
 
@@ -47,17 +47,6 @@ class ServicesController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -65,7 +54,8 @@ class ServicesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $service = Service::find($id);
+        return view('services.create_update', compact('service'));
     }
 
     /**
@@ -77,7 +67,18 @@ class ServicesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = Auth::user();
+        $service = Service::find($id);
+
+        if ($user->can('modify', $service)) {
+
+            $service->fill($request->all());
+            $service->save();
+            return redirect()->route('service.index');
+
+        } else {
+            return abort(403, 'Unauthorized action.');
+        }
     }
 
     /**
@@ -88,6 +89,15 @@ class ServicesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = Auth::user();
+        $service = Service::find($id);
+
+        if ($user->can('modify', $service)) {
+            $service->delete();
+            return redirect()->route('service.index');
+
+        } else {
+            return abort(403, 'Unauthorized action.');
+        }
     }
 }

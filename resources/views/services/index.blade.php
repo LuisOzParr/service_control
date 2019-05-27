@@ -24,8 +24,12 @@
                         <td>{{$service->name}}</td>
                         <td>{{$service->status}}</td>
                         <td>
-                            <a class="button is-small is-danger">Eliminar</a>
-                            <a class="button is-small">Editar</a>
+                            <form method="post" action="{{route('service.destroy',[$service->id])}}" id="serviceForDelete{{$service->id}}">
+                                @method('DELETE')
+                                @csrf
+                                 <a class="button is-small is-danger" onclick="deleteButton('serviceForDelete{{$service->id}}')">Elimainar</a>
+                            </form>
+                            <a class="button is-small" href="{{route('service.edit', ['id'=>$service->id])}}">Editar</a>
                         </td>
                     </tr>
                 @endforeach
@@ -38,3 +42,5 @@
         </tbody>
     </table>
 @endsection
+
+

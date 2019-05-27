@@ -6,9 +6,26 @@
 
 require('./bootstrap');
 require('bulma');
+const swal = window.swal = require('sweetalert2');
+
+window.deleteButton = (idForm) => (
+    swal.fire({
+        title: '¿Estas seguro?',
+        text: "No podrás revertir esto.!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, Eliminar',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.value) {
+            document.getElementById(idForm).submit()
+        }
+    })
+);
 
 document.addEventListener('DOMContentLoaded', () => {
-
     // Get all "navbar-burger" elements
     const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
 
