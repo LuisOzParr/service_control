@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
@@ -32,14 +33,23 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::find($id);
-        if($user->status){
-            $user->status = false;
-        }else{
-            $user->status = true;
-        }
-        $user->save();
 
-        return redirect()->route('admin.users.index');
+        if (Auth::user()->can('changeState', $user)) {
+
+            if($user->status){
+                $user->status = false;
+            }else{
+                $user->status = true;
+            }
+            $user->save();
+
+            return redirect()->route('admin.users.index');
+
+        } else {
+            return abort(401, 'Unauthorized action.');
+        }
+
+
     }
 
 }
