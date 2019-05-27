@@ -20,6 +20,7 @@
     @component('components.hero')
         @yield('title')
     @endcomponent
+    @yield('before_content')
     <section class="section">
         <div class="container">
             @yield('content')
@@ -32,6 +33,12 @@
                 <strong>Service Control</strong> by <a href="https://ozparrzource.com">Luis Ozuna</a>. This web App is a challenge to
                 <a href="https://www.computrabajo.com.mx/empresas/acerca-de-avances-tecnologicos-en-movilidad-sa-de-cv-8D002E3773ECFAD3">Avances Tecnológicos en Movilidad S.A. de C.V.</a>
             </p>
+            <a class="button" href="https://github.com/LuisOzParr/service_control">
+                <span class="icon">
+                  <i class="fab fa-github"></i>
+                </span>
+                <span>GitHub</span>
+            </a>
         </div>
     </footer>
     @yield('js')

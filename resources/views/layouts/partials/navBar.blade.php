@@ -1,7 +1,7 @@
 <nav class="navbar is-light " role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <a class="navbar-item" href="{{ url('/') }}">
-            <img src="https://ozparrsource.com/img/icono/logo.png" width="112" height="28" alt="logo">
+            <img src="{{asset('img/logo.png')}}" width="112" height="28" alt="logo">
         </a>
 
         <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
