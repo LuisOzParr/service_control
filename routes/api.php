@@ -14,3 +14,12 @@ use Illuminate\Http\Request;
 */
 
 Route::resource('users', 'Api\V1\UsersController')->only(['index']);
+
+Route::post('register', 'Auth\Api\PassportController@register');
+Route::post('login', 'Auth\Api\PassportController@login');
+
+Route::post('sign-out', 'Auth\Api\PassportController@signOut')
+    ->middleware('auth:api');
+
+Route::post('test-authenticated', 'Auth\Api\PassportController@testAuthenticated')
+    ->middleware('auth:api');
